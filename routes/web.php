@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/user','UserController');
 Route::post('users/confirm','UserController@confirm')->name('user.confirm');
+
+
+//test route for blade design
+Route::get('/test',function(){
+    return view('users/update');
+});
+
+Route::get('/test2',function(){
+    return view('users/update_confirm');
+});
+
+Route::get('/profile',function(){
+    return view('users/profile');
+});

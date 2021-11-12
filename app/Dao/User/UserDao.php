@@ -3,7 +3,7 @@
 namespace App\Dao\User;
 
 use App\Contracts\Dao\UserDaoInterface;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserDao implements UserDaoInterface
