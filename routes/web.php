@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,5 +22,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/user','UserController');
-Route::post('users/confirm','UserController@confirm')->name('user.confirm');
+Route::resource('/user', 'UserController');
+Route::post('users/confirm', 'UserController@confirm')->name('user.confirm');
+Route::post('test',  function () {
+    $user = User::where('id', 1)->deleted()->notProfile()->first();
+});
