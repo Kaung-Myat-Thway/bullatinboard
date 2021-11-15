@@ -1,11 +1,12 @@
 <?php
 
-<<<<<<< HEAD
+
 use App\Http\Controllers\UserController;
-=======
-use App\User;
->>>>>>> 1bc5be33bebbcdf0323ab80bfc8b50883e1c631b
+
+use App\Models\User;
+
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,21 +29,15 @@ Auth::routes();
 
 Route::resource('/user','UserController');
 Route::post('users/confirm','UserController@confirm')->name('user.confirm');
+Route::post('/update_confirm','UserController@update_confirm')->name('user.update_confirm');
+Route::get('/usersearch','UserController@search')->name('user.search');
+
+Route::resource('/post','PostController');
+Route::post('posts/confirm','PostController@confirm')->name('post.confirm');
+Route::post('posts/update_confirm','PostController@update_confirm')->name('post.update_confirm');
+Route::get('/search','PostController@search')->name('post.search');
 
 
-//test route for blade design
-Route::get('/test',function(){
-    return view('users/update');
-});
-
-Route::get('/test2',function(){
-    return view('users/update_confirm');
-});
-
-Route::get('/profile',function(){
-    return view('users/profile');
-Route::resource('/user', 'UserController');
-Route::post('users/confirm', 'UserController@confirm')->name('user.confirm');
 Route::post('test',  function () {
     $user = User::where('id', 1)->deleted()->notProfile()->first();
 });

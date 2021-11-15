@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->integer('deleted_user_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

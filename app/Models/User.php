@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -57,6 +57,7 @@ class User extends Authenticatable
         return $query->whereNull('deleted_user_id');
     }
 
+
     /**
      * Scope a query to only include popular users.
      *
@@ -67,4 +68,15 @@ class User extends Authenticatable
     {
         return $query->whereNull('profile');
     }
+
+    public function created_user()
+    {
+          return $this->belongsTo(User::class, 'created_user_id');
+    }
+
+    public function posts()
+    {
+      return $this->hasMany(Post::class, 'create_user_id');
+    }
 }
+

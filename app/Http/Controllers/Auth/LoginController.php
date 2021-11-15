@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
@@ -36,5 +38,19 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function authenticated($user)
+    {
+        // dd($request);
+        //here i want to check logged in user role
+        $user = Auth::user();
+
+        if ($user->type == 0) {
+
+            return redirect()->route('user.index');
+        }
+
+        return redirect()->route('post.index');
     }
 }
