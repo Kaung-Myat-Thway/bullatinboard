@@ -46,6 +46,10 @@
             <li class="nav-item px-3">
               <a class="nav-link text-primary" href="{{ url('/post') }}">Posts</a>
             </li>
+
+            <li class="nav-item px-3">
+              <a class="nav-link text-primary" href="">Contact</a>
+            </li>
           </ul>
           <form class="d-flex ml-auto" method="POST" action="{{ route('logout') }}">
             <label for="" class="text-primary mt-2 font-weight-bold mr-3">{{ Auth::user()->name }} </label>

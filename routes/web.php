@@ -42,15 +42,20 @@ Route::get('/export', 'PostController@export')->name('export');
 Route::get('/excel', 'PostController@importExportView');
 Route::post('/import', 'PostController@import')->name('import');
 
+Route::get('/contact','ContactController@contact');
+Route::post('/contact','ContactController@contactSubmit')->name('contact.submit');
 
-Route::post('test',  function () {
-    $user = User::where('id', 1)->deleted()->notProfile()->first();
-});
 
-Route::post('post',  function () {
-    $post = Post::select(
-        'title',
-        'description',
-        'status'
-    )->whereNull("deleted_at");
-});
+
+
+// Route::post('test',  function () {
+//     $user = User::where('id', 1)->deleted()->notProfile()->first();
+// });
+
+// Route::post('post',  function () {
+//     $post = Post::select(
+//         'title',
+//         'description',
+//         'status'
+//     )->whereNull("deleted_at");
+// });
