@@ -15,10 +15,10 @@
       <a href="{{ route('post.create')}}" class="btn btn-outline-primary px-5 w-100"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add</a>
     </div>
     <div class="col-md-2 col-sm-12 p-auto">
-      <a href="" class="btn btn-outline-primary px-4 w-100"><i class="fas fa-upload"></i>&nbsp;&nbsp;Upload</a>
+      <a href="{{ url('/excel')}}" class="btn btn-outline-primary px-4 w-100"><i class="fas fa-upload"></i>&nbsp;&nbsp;Upload</a>
     </div>
     <div class="col-md-2 col-sm-12 p-auto">
-      <form action="" class="">
+      <form action="{{ route('export') }}" method="GET" >
         <input type="search" name="search" id="search-input" class="form-control m-auto" hidden />
         <button type="submit" class="btn btn-outline-primary px-3 w-100" id="download-button"><i class="fas fa-download"></i> &nbsp;&nbsp; Download</button>
       </form>

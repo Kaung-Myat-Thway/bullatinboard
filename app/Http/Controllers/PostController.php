@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contracts\Services\PostServiceInterface;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PostExport;
+use App\Imports\PostImport;
 
 class PostController extends Controller
 {
@@ -65,7 +68,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|unique:posts',
+            'title' => 'required',
             'description' => 'required',
         ]);
 
@@ -168,5 +171,28 @@ class PostController extends Controller
         } else {
             return redirect('/post')->with('message', 'No Results found!');
         }
+    }
+
+    public function importExportView()
+    {
+       return view('posts/post_import');
+    }
+
+     /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function export() 
+    {
+        return Excel::download(new PostExport, 'posts.xlsx');
+    }
+     
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function import() 
+    {
+        Excel::import(new PostImport,request()->file('file'));
+             
+        return redirect('/post')->with('message', 'Posts uploaded successfully.');
     }
 }
