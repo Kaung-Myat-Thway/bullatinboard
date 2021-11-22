@@ -1,66 +1,87 @@
-
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ config('app.name') }}</title>
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+          crossorigin="anonymous"/>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
-<body>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="{{ url('/home') }}"><b>Bullatin Board</b></a>
+    </div>
+    <!-- /.login-logo -->
 
-<div class="container mt-5 border col-8">
-      {{-- <div class="row"> --}}
-        <label>Log In</label>
-      {{-- </div> --}}
+    <!-- /.login-box-body -->
+    <div class="card">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="{{ route('login') }}" method="POST">
-        @csrf
-     
-        <div class="form-group row">
-            <div class="col-3">
-                <label for="email">Email</label>
-            </div>
-            <div class="col-5">
-                <input type="text" id="email" name="email" class="form-control">
-            </div>
-        </div>
+            <form method="post" action="{{ url('/login') }}">
+                @csrf
 
-        <div class="form-group row">
-            <div class="col-3">
-                <label for="password">Password</label>
-            </div>
-            <div class="col-5">
-                <input type="text" id="password" name="password" class="form-control">
-            </div>
+                <div class="input-group mb-3">
+                    <input type="email"
+                           name="email"
+                           value="{{ old('email') }}"
+                           placeholder="Email"
+                           class="form-control @error('email') is-invalid @enderror">
+                    <div class="input-group-append">
+                        <div class="input-group-text"><span class="fas fa-envelope"></span></div>
+                    </div>
+                    @error('email')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="password"
+                           name="password"
+                           placeholder="Password"
+                           class="form-control @error('password') is-invalid @enderror">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                    @error('password')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+
+                </div>
+
+                <div class="row">
+                    <div class="col-8">
+                        <div class="icheck-primary">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember Me</label>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    </div>
+
+                </div>
+            </form>
         </div>
-        <div class="form-group d-flex justify-content-center">
-            <div class="items-center">
-                <input type="checkbox" name="remember" id="remember" class="mr-2">
-                <label for="remember">Remember me</label>
-            </div>
-            <a href="#" class="row">Register Now ?</a>
-        </div>
-      
-        <div class="form-group d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary">Log In</button>
-        </div>
-    </form>
-  </div>
+        <!-- /.login-card-body -->
+    </div>
+
+</div>
+<!-- /.login-box -->
+
+<script src="{{ asset('js/app.js') }}" defer></script>
+
 </body>
-
+</html>

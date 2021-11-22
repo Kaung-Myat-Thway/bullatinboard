@@ -59,3 +59,7 @@ Route::post('/contact','ContactController@contactSubmit')->name('contact.submit'
 //         'status'
 //     )->whereNull("deleted_at");
 // });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+

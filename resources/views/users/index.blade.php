@@ -3,7 +3,7 @@
 <div class="container mb-5 pb-5">
   <div class="row">
     <div class="col-md-12 py-3">
-      <h2 class="text-primary font-weight-bold">User List</h2>
+      <h2 class="text-dark font-weight-bold">User List</h2>
     </div>
   </div>
   <div class="row mb-3">
@@ -15,7 +15,7 @@
       <button type="submit" class="btn btn-outline-primary px-2 col-md-2"><i class="fas fa-search"></i> Search</button>
     </form>
     <div class="col-md-2">
-      <a href="{{ route('user.create') }}" class="btn btn-outline-primary px-5 w-100">Add</a>
+      <a href="{{ route('user.create') }}" class="btn btn-outline-primary px-5 w-100"><i class="fas fa-plus-circle"></i>Add</a>
     </div>
   </div>
   @if(Session('message'))
@@ -26,9 +26,10 @@
     @endif
   <div class="row">
     <div class="col-md-12 mt-3">
-      <table class="table table-striped mt-3 text-primary">
-        <thead>
+      <table class="table table-hover mt-3 text-primary">
+        <thead class="bg-gradient-dark text-light">
           <tr>
+            <th>No.</th>
             <th>Name</th>
             <th>Email</th>
             <th>Created User</th>
@@ -39,9 +40,13 @@
           </tr>
         </thead>
         <tbody>
+      @php
+        $i=1;
+      @endphp
           @foreach($users as $user)
           <tr>
-            <td><a href="" class="modal-lg" data-toggle="modal" data-target="#user{{ $user->id }}" type="button">
+            <td class="text-dark">{{$i++}}</td>
+            <td><a href="" class="modal-lg text-dark" data-toggle="modal" data-target="#user{{ $user->id }}" type="button">
                 {{ $user->name }}</a>
               <!-- Modal -->
               <div class="modal fade" id="user{{ $user->id }}" role="dialog">
@@ -107,11 +112,11 @@
                 </div>
               </div>
             </td>
-            <td>{{ $user->email }}</td>
-            <td>{{$user->created_user['name']}}</td>
-            <td>{{ $user->phone }}</td>
-            <td>{{ $user->dob }}</td>
-            <td>{{ $user->created_at->format('m/d/Y') }}</td>
+            <td class="text-dark">{{ $user->email }}</td>
+            <td class="text-dark">{{$user->created_user['name']}}</td>
+            <td class="text-dark">{{ $user->phone }}</td>
+            <td class="text-dark">{{ $user->dob }}</td>
+            <td class="text-dark">{{ $user->created_at->format('m/d/Y') }}</td>
             <td>
               <a href="#" class="btn btn-danger delete btn-sm" data-toggle="modal" data-target="#deleteModal{{ $user->id }}"><i class="fas fa-trash"></i> Delete</a>
               <!-- Delete Modal -->
@@ -146,6 +151,8 @@
     </tbody>
     </table>
   </div>
+
+
 </div>
 {{ $users->appends(Request::get('page'))->links() }}
 </div>

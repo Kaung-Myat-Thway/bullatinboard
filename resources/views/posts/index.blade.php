@@ -3,13 +3,13 @@
 <div class="container mb-5 pb-5">
   <div class="row">
     <div class="col-md-12 py-3">
-      <h3 class="text-primary">Post List</h3>
+      <h3 class="text-dark">Post List</h3>
     </div>
   </div>
   <div class="row mb-3">
   <form action="{{ route('post.search') }}" method="GET" class="col-md-5 row">
-            <div class="col-sm-6 mr-5"> <input type="text" name="search" class="form-control"  required/></div>
-            <button type="submit" class="btn btn-primary px-2 col-sm-3">Search</button>
+            <div class="col-sm-7"> <input type="text" name="search" class="form-control"  required/></div>
+            <button type="submit" class="btn btn-primary px-2 col-sm-3"><i class="fas fa-search mr-2"></i>Search</button>
          </form>
     <div class="col-md-2 col-sm-12 p-auto">
       <a href="{{ route('post.create')}}" class="btn btn-outline-primary px-5 w-100"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add</a>
@@ -32,9 +32,10 @@
   @endif
   <div class="row">
     <div class="col-md-12">
-      <table class="table mt-3 table-striped text-primary" id="table">
-        <thead>
+      <table class="table mt-3 table-hover text-primary" id="table">
+        <thead class="bg-gradient-dark text-light">
           <tr>
+            <th>No.</th>
             <th>Post Title</th>
             <th>Post Description</th>
             <th>Posted User</th>
@@ -42,10 +43,15 @@
             <th colspan=2 class="noExport">Actions</th>
           </tr>
         </thead>
+
+        @php
+        $i=1;
+      @endphp
         <tbody>
           @foreach($posts as $post)
           <tr>
-            <td><a href="" class="modal-lg" data-toggle="modal" data-target="#post{{$post->id}}">{{$post->title}}</a>
+            <td class="text-dark">{{$i++}}</td>
+            <td><a href="" class="modal-lg text-dark" data-toggle="modal" data-target="#post{{$post->id}}">{{$post->title}}</a>
               <!-- Show post modal -->
               <div class="modal fade" id="post{{$post->id}}" aria-hidden="true">
                 <div class="modal-dialog">
@@ -97,12 +103,12 @@
                 </div>
               </div>
             </td>
-            <td>{{$post->description}}</td>
-            <td>{{$post->user['name']}}</td>
-            <td>{{$post->created_at->format('Y/m/d')}}</td>
-            <td><a href="{{ route('post.edit',$post->id)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> &nbsp; &nbsp;Edit</a></td>
+            <td class="text-dark">{{$post->description}}</td>
+            <td class="text-dark">{{$post->user['name']}}</td>
+            <td class="text-dark">{{$post->created_at->format('Y/m/d')}}</td>
+            <td class="text-dark"><a href="{{ route('post.edit',$post->id)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Edit</a></td>
             <td>
-              <a href="#" class="btn btn-danger delete btn-sm" data-toggle="modal" data-target="#deleteModal{{$post->id}}"><i class="fas fa-trash"></i> &nbsp; &nbsp;Delete</a>
+              <a href="#" class="btn btn-danger delete btn-sm" data-toggle="modal" data-target="#deleteModal{{$post->id}}"><i class="fas fa-trash"></i>Delete</a>
               <!-- Delete Modal -->
               <div class="modal modal-danger fade" id="deleteModal{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="Delete" aria-hidden="true">
                 <div class="modal-dialog" role="document">
