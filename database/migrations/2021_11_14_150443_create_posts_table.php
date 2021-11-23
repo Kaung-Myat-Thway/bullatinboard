@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->longText('description');
             $table->integer('status');
             $table->integer('created_user_id');
-            $table->foreign('create_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('created_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('updated_user_id');
             $table->foreign('updated_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('deleted_user_id')->nullable();
