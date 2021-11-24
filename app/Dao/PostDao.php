@@ -21,7 +21,7 @@ class PostDao implements PostDaoInterface
       'title' => $request->get('title'),
       'description' => $request->get('description'),
       'status' => $request->get('status'),
-      'create_user_id' => Auth::user()->id,
+      'created_user_id' => Auth::user()->id,
       'updated_user_id' => Auth::user()->id
     ]);
     $post->save();
@@ -51,17 +51,19 @@ class PostDao implements PostDaoInterface
    */
   public function PostList()
   {
-    $id = Auth::user()->id;
-    $user_type = User::find($id);
-    if ($user_type->type == 0) {
-      $data = Post::where('deleted_user_id', null)
-        ->latest()
-        ->paginate(5);
-    } else {
-      $data = Post::where('deleted_user_id', null)->where('create_user_id', '=', $id)
-        ->latest()
-        ->paginate(5);
-    }
+    // $id = Auth::user()->id;
+    // $user_type = User::find($id);
+    // if ($user_type->type == 0) {
+    
+    // } else {
+    //   $data = Post::where('deleted_user_id', null)->where('created_user_id', '=', $id)
+    //     ->latest()
+    //     ->paginate(5);
+    // }
+
+    $data = Post::where('deleted_user_id', null)
+    ->latest()
+    ->paginate(5);
     return $data;
   }
 
@@ -92,7 +94,7 @@ class PostDao implements PostDaoInterface
       'title' => $request->title,
       'description' => $request->description,
       'status' => $status,
-      'create_user_id' => $request->create_user_id,
+      'created_user_id' => $request->create_user_id,
       'updated_user_id' => $request->updated_user_id,
     ];
 

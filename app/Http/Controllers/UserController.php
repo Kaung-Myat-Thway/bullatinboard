@@ -15,6 +15,9 @@ class UserController extends Controller
     public function __construct(UserServiceInterface $userInterface)
     {
         $this->userInterface = $userInterface;
+
+        $this->middleware('auth');
+
     }
     /**
      * Display a listing of the resource.
@@ -24,6 +27,7 @@ class UserController extends Controller
     public function index()
     {
         $users = $this->userInterface->UserList();
+
         return view('users.index', compact('users'));
     }
 
@@ -150,6 +154,34 @@ class UserController extends Controller
         $user = $this->userInterface->UserDelete($id);
 
         return redirect('/user')->with('message', 'You have successsfully deleted!');
+    }
+
+        /**
+     * transition
+     * 
+     * @return passsword blade
+     */
+    public function password()
+    {
+        return view('users.password');
+    }
+
+      /**
+     * changed password for user
+     * 
+     * @return user->index blade
+     */
+    public function change(Request $request)
+    {
+        $request->validate([
+            'current-password' => 'required',
+            'password' => 'required|same:password|min:6',
+            'password-confirmation' => 'required|same:password|min:6', 
+        ]);
+
+        $user = $this->userInterface->PasswordChange($request);
+
+        return redirect('user')->with('message', "Password changed successfully!");
     }
 
     /**

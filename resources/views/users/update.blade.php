@@ -81,7 +81,7 @@
             <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" width="150px" height="150px" class="avatar img-circle img-thumbnail rounded-circle" alt="avatar">
             @endif
           </div>
-          <a href="" class="ml-2 mt-3">Change Password</a>
+          <a href="{{ route('user.password')}}" class="ml-2 mt-3">Change Password</a>
         </div>
         <button class="btn btn-primary my-3" type="submit">Confirm</button>
         <a class="btn btn-outline-primary mx-3 px-3" type="submit" onclick="document.getElementById('name').value = '',document.getElementById('phone').value = '',document.getElementById('email').value = '',document.getElementById('date').value = '',document.getElementById('address').value = ''">Clear</a>

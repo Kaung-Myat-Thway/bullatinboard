@@ -8,7 +8,7 @@
   </div>
   <div class="row mb-3">
   <form action="{{ route('post.search') }}" method="GET" class="col-md-5 row">
-            <div class="col-sm-7"> <input type="text" name="search" class="form-control"  required/></div>
+            <div class="col-sm-7"> <input type="text" name="search" class="form-control" placeholder="Search Post here..."  required/></div>
             <button type="submit" class="btn btn-primary px-2 col-sm-3"><i class="fas fa-search mr-2"></i>Search</button>
          </form>
     <div class="col-md-2 col-sm-12 p-auto">
@@ -106,7 +106,7 @@
             <td class="text-dark">{{$post->description}}</td>
             <td class="text-dark">{{$post->user['name']}}</td>
             <td class="text-dark">{{$post->created_at->format('Y/m/d')}}</td>
-            <td class="text-dark"><a href="{{ route('post.edit',$post->id)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Edit</a></td>
+            <td class="text-dark"><a href="{{ route('post.edit',$post->id)}}" class="btn btn-success btn-sm"><i class="fas fa-edit" ></i> Edit</a></td>
             <td>
               <a href="#" class="btn btn-danger delete btn-sm" data-toggle="modal" data-target="#deleteModal{{$post->id}}"><i class="fas fa-trash"></i>Delete</a>
               <!-- Delete Modal -->

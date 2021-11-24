@@ -29,6 +29,8 @@ Auth::routes();
 
 Route::resource('/user', 'UserController');
 Route::post('users/confirm', 'UserController@confirm')->name('user.confirm');
+Route::get('/password','UserController@password')->name('user.password');
+Route::post('/change','UserController@change')->name('user.change');
 Route::post('/update_confirm', 'UserController@update_confirm')->name('user.update_confirm');
 Route::get('/usersearch', 'UserController@search')->name('user.search');
 
@@ -37,6 +39,7 @@ Route::post('posts/confirm', 'PostController@confirm')->name('post.confirm');
 Route::post('posts/update_confirm', 'PostController@update_confirm')->name('post.update_confirm');
 Route::get('/search', 'PostController@search')->name('post.search');
 
+
 //Excel export/import route
 Route::get('/export', 'PostController@export')->name('export');
 Route::get('/excel', 'PostController@importExportView');
@@ -44,6 +47,9 @@ Route::post('/import', 'PostController@import')->name('import');
 
 Route::get('/contact','ContactController@contact');
 Route::post('/contact','ContactController@contactSubmit')->name('contact.submit');
+
+//Route for language switch
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => '\App\Http\Controllers\LanguageController@switchLang']);
 
 
 

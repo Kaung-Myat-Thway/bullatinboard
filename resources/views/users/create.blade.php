@@ -15,7 +15,7 @@
         <div class="form-group row">
           <label for="name" class="col-sm-3 col-form-label text-primary">Name :</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control @error ('name') is-invalid @enderror" id="name" name="name" value="{{old('name')}}">
+            <input type="text"  class="form-control @error ('name') is-invalid @enderror" id="name" name="name" value="{{old('name')}}">
             @error('name')
             <div class="invalid-feedback"><strong>{{$message}}</strong></div>
             @enderror
@@ -42,7 +42,7 @@
         <div class="form-group row">
           <label for="cpassword" class="col-sm-3 col-form-label text-primary">Confirm Password :</label>
           <div class="col-sm-9">
-            <input type="password" class="form-control @error ('cpassword') is-invalid @enderror" id="cpassowrd" name="cpassword" value="{{ old('cpassword')}}">
+            <input type="password" onpaste="return false" class="form-control @error ('cpassword') is-invalid @enderror" id="cpassowrd" name="cpassword" value="{{ old('cpassword')}}">
             @error('cpassword')
             <div class="invalid-feedback"><strong>{{$message}}</strong></div>
             @enderror

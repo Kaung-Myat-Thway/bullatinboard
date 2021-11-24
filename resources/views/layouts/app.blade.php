@@ -10,6 +10,7 @@
           crossorigin="anonymous"/>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     @yield('third_party_stylesheets')
 
@@ -28,24 +29,24 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
-            <li>
-            <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-    English
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">English</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Japanese</a>
-   
-  </div>
-</div>
-            </li>
+ 
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span> {{ Config::get('languages')[App::getLocale()]['display'] }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        @foreach (Config::get('languages') as $lang => $language)
+            @if ($lang != App::getLocale())
+                    <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"><span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span> {{$language['display']}}</a>
+            @endif
+        @endforeach
+        </div>
+</li>
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                     <img src="/img/{{ Auth::user()->profile }}"
                          class="user-image img-circle elevation-2" alt="User Image">
-                    <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
+                    <span class="d-none d-md-inline"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <!-- User image -->
@@ -97,5 +98,21 @@
 @yield('third_party_scripts')
 
 @stack('page_scripts')
+<script>
+    $(document).ready(function() {
+    var readURL = function(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          $('.avatar').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+      }
+      }
+      $(".file-upload").on('change', function(){
+      readURL(this);
+      });
+    }); 
+  </script>
 </body>
 </html>

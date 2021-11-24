@@ -1,6 +1,15 @@
 <?php
 return [
-    'en' => 'English',
-    'jp' => 'Japanese',
+  
+
+    'en' => [
+      'display' => 'English',
+      'flag-icon' => 'us'
+  ],
+
+  'jp' => [
+    'display' => 'Japanese',
+    'flag-icon' => 'jp'
+],
     
 ];

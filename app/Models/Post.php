@@ -10,7 +10,7 @@ class Post extends Model
         'title', 
         'description',
         'status',
-        'create_user_id', 
+        'created_user_id', 
         'updated_user_id',
         'deleted_user_id',
         'created_at',
@@ -29,7 +29,7 @@ class Post extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'create_user_id');
+        return $this->belongsTo(User::class, 'created_user_id');
     }
 
 }

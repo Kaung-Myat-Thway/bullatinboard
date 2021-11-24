@@ -71,6 +71,19 @@ class UserDao implements UserDaoInterface
     return $users;
   }
 
+  public function PasswordChange($request){
+    $userpass=Auth::user();
+        if(!(Hash::check($request->get('current-password'),Auth::user()->password))){
+            return back()->with('message',"Your current password does not match!");
+        }
+        $userpass->password = Hash::make($request->password);
+        $userpass->updated_user_id=Auth::user()->id;
+        $userpass->updated_at=now();
+        $userpass->save();
+
+        return $userpass;
+  }
+
   /**
    * show detail user 
    *
