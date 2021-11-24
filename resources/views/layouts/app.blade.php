@@ -20,7 +20,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
     <!-- Main Header -->
-    <nav class="main-header navbar navbar-expand bg-gradient-dark navbar-dark">
+    <nav class="main-header navbar navbar-expand bg-gradient-primary navbar-dark">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">

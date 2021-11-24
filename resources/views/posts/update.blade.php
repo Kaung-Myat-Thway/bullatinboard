@@ -1,51 +1,48 @@
 @extends('layouts.app')
 @section('content')
-<div class="container my-5">
-  <div class="row my-3">
-    <div class="col-md-2"></div>
-    <div class="col-md-10">
-      <h2 class="text-primary font-weight-bold">Update Post</h2>
-    </div>
-  </div>
+<div class="container">
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8 bg-light p-5">
-      <form action="{{ url('posts/update_confirm') }}" method="POST">
-        @csrf
-        <input type="text" id="id" name="id" value="{{ $post->id }}" hidden>
-        <div class="form-group row">
-          <label for="title" class="col-sm-2 col-form-label text-primary">Title :</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control @error ('title') is-invalid @enderror" id="title" name="title" value="{{ $post->title }}">
-            @error('title')
-            <div class="invalid-feedback"><strong>{{$message}}</strong></div>
-            @enderror
+    <div class="col-md-8 mx-auto">
+      <!-- general form elements -->
+      <div class="card card-primary">
+        <div class="card-header bg-gradient-primary">
+          <h3 class="card-title">Update Post</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="{{ url('posts/update_confirm') }}" method="POST">
+          @csrf
+          <input type="text" id="id" name="id" value="{{ $post->id }}" hidden>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" placeholder="Post Title Here" class="form-control @error ('title') is-invalid @enderror" id="title" name="title" value="{{ $post->title ?? old('title') }}">
+              @error('title')
+              <div class="invalid-feedback"><strong>{{$message}}</strong></div>
+              @enderror
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control @error ('description') is-invalid @enderror" name="description" id="description" rows="3">{{ $post->description ?? old('description') }}</textarea>
+              @error('description')
+              <div class="invalid-feedback"><strong>{{$message}}</strong></div>
+              @enderror
+            </div>
+            <div class="form-gruop">
+              <label for="status">Status</label>
+              <input type="checkbox" class="align-left d-flex" data-toggle="toggle" class="form-control" id="status" name="status" checked>
+            </div>
           </div>
-          <span class="asterisk_input"> </span>
-        </div>
-        <div class="form-group row">
-          <label for="description" class="col-sm-2 col-form-label text-primary">Description :</label>
-          <div class="col-sm-10">
-            <textarea class="form-control @error ('description') is-invalid @enderror" name="description" id="description" rows="3">{{ $post->description }}</textarea>
-            @error('description')
-            <div class="invalid-feedback"><strong>{{$message}}</strong></div>
-            @enderror
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <button type="submit" class="btn btn-success">Confirm</button>
+            <a type="submit" class="btn btn-danger" onclick="document.getElementById('title').value = '',document.getElementById('description').value = ''">Clear</a>
           </div>
-          <span class="asterisk_input"> </span>
-        </div>
-        <div class="form-group row mb-5">
-          <label for="status" class="col-sm-2 col-form-label text-primary">Status :</label>
-          <div class="col-sm-1">
-            <input type="checkbox" data-toggle="toggle" class="form-control" id="status" name="status" vlaue="1" checked>
-          </div>
-        </div>
-        <div class="float-right">
-          <a type="submit" class="btn btn-outline-primary mx-3 px-3" onclick="document.getElementById('title').value = '',document.getElementById('description').value = ''">Clear</a>
-          <button class="btn btn-primary" type="submit">Confirm</button>
-        </div>
-      </form>
+        </form>
+      </div>
+      <!-- /.card -->
     </div>
-    <div class="col-md-2"></div>
   </div>
+</div>
 </div>
 @endsection

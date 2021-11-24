@@ -1,19 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<div class="container my-3 pb-5">
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-      <h2 class="text-primary my-3">Create User Confirmation </h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+<div class="container">
+
+  <div class="row ">
+    <div class="col-md-10 mx-auto">
       <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group row mt-3">
-          <div class="col-sm-9">
+          <div class="col-12 ">
             <img src="/img/{{ $user['profile'] }}" class="avatar img-circle img-thumbnail rounded-circle" width="150px" alt="Profile">
             <input type="hidden" value="{{$user['profile']}}" name="profile" id="profile">
           </div>
@@ -64,7 +58,11 @@
         <a href="{{ url('user/create') }}" class="btn btn-outline-primary mx-3">Cancel</a>
       </form>
     </div>
+
+    
+  
+  </div>
   </div>
 </div>
-</div>
+
 @endsection

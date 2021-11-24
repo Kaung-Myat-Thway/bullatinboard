@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row my-5 offset-2">
+<div class="container py-2">
+    <div class="row  offset-2">
         <h2>Upload CSV</h2>
     </div>
     {{-- <div class="row">

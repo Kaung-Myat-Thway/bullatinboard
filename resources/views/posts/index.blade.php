@@ -7,10 +7,10 @@
     </div>
   </div>
   <div class="row mb-3">
-  <form action="{{ route('post.search') }}" method="GET" class="col-md-5 row">
-            <div class="col-sm-7"> <input type="text" name="search" class="form-control" placeholder="Search Post here..."  required/></div>
-            <button type="submit" class="btn btn-primary px-2 col-sm-3"><i class="fas fa-search mr-2"></i>Search</button>
-         </form>
+    <form action="{{ route('post.search') }}" method="GET" class="col-md-5 row">
+      <div class="col-sm-7"> <input type="text" name="search" class="form-control" placeholder="Search Post here..." required /></div>
+      <button type="submit" class="btn btn-primary px-2 col-sm-3"><i class="fas fa-search mr-2"></i>Search</button>
+    </form>
     <div class="col-md-2 col-sm-12 p-auto">
       <a href="{{ route('post.create')}}" class="btn btn-outline-primary px-5 w-100"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add</a>
     </div>
@@ -18,7 +18,7 @@
       <a href="{{ url('/excel')}}" class="btn btn-outline-primary px-4 w-100"><i class="fas fa-upload"></i>&nbsp;&nbsp;Upload</a>
     </div>
     <div class="col-md-2 col-sm-12 p-auto">
-      <form action="{{ route('export') }}" method="GET" >
+      <form action="{{ route('export') }}" method="GET">
         <input type="search" name="search" id="search-input" class="form-control m-auto" hidden />
         <button type="submit" class="btn btn-outline-primary px-3 w-100" id="download-button"><i class="fas fa-download"></i> &nbsp;&nbsp; Download</button>
       </form>
@@ -33,7 +33,7 @@
   <div class="row">
     <div class="col-md-12">
       <table class="table mt-3 table-hover text-primary" id="table">
-        <thead class="bg-gradient-dark text-light">
+        <thead class="bg-gradient-primary text-light">
           <tr>
             <th>No.</th>
             <th>Post Title</th>
@@ -46,7 +46,7 @@
 
         @php
         $i=1;
-      @endphp
+        @endphp
         <tbody>
           @foreach($posts as $post)
           <tr>
@@ -106,15 +106,15 @@
             <td class="text-dark">{{$post->description}}</td>
             <td class="text-dark">{{$post->user['name']}}</td>
             <td class="text-dark">{{$post->created_at->format('Y/m/d')}}</td>
-            <td class="text-dark"><a href="{{ route('post.edit',$post->id)}}" class="btn btn-success btn-sm"><i class="fas fa-edit" ></i> Edit</a></td>
+            <td class="text-dark"><a href="{{ route('post.edit',$post->id)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Edit</a></td>
             <td>
               <a href="#" class="btn btn-danger delete btn-sm" data-toggle="modal" data-target="#deleteModal{{$post->id}}"><i class="fas fa-trash"></i>Delete</a>
               <!-- Delete Modal -->
               <div class="modal modal-danger fade" id="deleteModal{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="Delete" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
-                    <div class="modal-header bg-light">
-                      <h5 class="modal-title text-danger font-weight-bold" id="exampleModalLabel">Delete Post</h5>
+                    <div class="modal-header bg-gradient-danger">
+                      <h5 class="modal-title text-light font-weight-bold" id="exampleModalLabel">Delete Post</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -123,7 +123,7 @@
                       <form action="{{ route('post.destroy', $post->id) }}" method="post">
                         @csrf
                         @method('DELETE')
-                        <h5 class="text-center text-primary">Are you sure you want to delete this post?</h5>
+                        <h5 class="text-center text-danger">Are you sure you want to delete this post?</h5>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>

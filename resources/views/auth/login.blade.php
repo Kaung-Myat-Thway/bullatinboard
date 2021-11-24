@@ -15,10 +15,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
+<body class="hold-transition login-page ">
+<div class="login-box bg-primary">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>Bullatin Board</b></a>
+        <a href="{{ url('/home') }}"><b class="text-light">Bullatin Board</b></a>
     </div>
     <!-- /.login-logo -->
 

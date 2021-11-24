@@ -27,7 +27,7 @@
   <div class="row">
     <div class="col-md-12 mt-3">
       <table class="table table-hover mt-3 text-primary">
-        <thead class="bg-gradient-dark text-light">
+        <thead class="bg-gradient-primary text-light">
           <tr>
             <th>No.</th>
             <th>Name</th>
