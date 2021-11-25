@@ -4,7 +4,7 @@
   <div class="row">
   <div class="col-md-10 mt-5 mx-auto ">
       <!-- general form elements -->
-      <div class="card card-primary">
+      <div class="card card-primary bg-white rounded shadow">
         <div class="card-header bg-gradient-primary">
           <h3 class="card-title text-center">Create User</h3>
         </div>

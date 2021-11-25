@@ -19,8 +19,8 @@ class Admin
         if ( Auth::user()->type == 0) {
             return $next($request);
        }
-
-       return redirect('user/{user}')->with('error','You have not admin access');
+     
+      return redirect('/post')->with('message','You have no authorize for this page');
    }
     
 }

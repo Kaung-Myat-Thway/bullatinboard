@@ -1,9 +1,15 @@
 @extends('layouts.app')
 @section('content')
 
-
     <!-- Content Header (Page header) -->
     <section class="content-header">
+      
+@if(Session('message'))
+    <div class="alert alert-dismissible alert-success my-5 show fade">
+      {{ Session('message') }}  
+      <button class="close" data-dismiss="alert">&times;</button>
+    </div>
+    @endif
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">

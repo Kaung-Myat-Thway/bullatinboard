@@ -25,7 +25,7 @@
     </div>
     @endif
   <div class="row">
-    <div class="col-md-12 mt-3">
+    <div class="col-12 mt-3">
       <table class="table table-hover mt-3 text-primary">
         <thead class="bg-gradient-primary text-light">
           <tr>
@@ -46,7 +46,7 @@
           @foreach($users as $user)
           <tr>
             <td class="text-dark">{{$i++}}</td>
-            <td><a href="" class="modal-lg text-dark" data-toggle="modal" data-target="#user{{ $user->id }}" type="button">
+            <td><a href="" class="modal-lg text-link" data-toggle="modal" data-target="#user{{ $user->id }}" type="button">
                 {{ $user->name }}</a>
               <!-- Modal -->
               <div class="modal fade" id="user{{ $user->id }}" role="dialog">
@@ -123,8 +123,8 @@
               <div class="modal modal-danger fade" id="deleteModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="Delete" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
-                    <div class="modal-header bg-light">
-                      <h5 class="modal-title text-danger font-weight-bold" id="exampleModalLabel">Delete User</h5>
+                    <div class="modal-header bg-danger">
+                      <h5 class="modal-title text-light font-weight-bold" id="exampleModalLabel">Delete User</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -133,7 +133,7 @@
                       <form action="{{ route('user.destroy', $user->id) }}" method="post">
                         @csrf
                         @method('DELETE')
-                        <h5 class="text-center text-primary">Are you sure you want to delete this user?</h5>
+                        <h5 class="text-center text-danger">Are you sure you want to delete this user?</h5>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>

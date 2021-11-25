@@ -51,19 +51,19 @@ class PostDao implements PostDaoInterface
    */
   public function PostList()
   {
-    // $id = Auth::user()->id;
-    // $user_type = User::find($id);
-    // if ($user_type->type == 0) {
-    
-    // } else {
-    //   $data = Post::where('deleted_user_id', null)->where('created_user_id', '=', $id)
-    //     ->latest()
-    //     ->paginate(5);
-    // }
+    $id = Auth::user()->id;
+    $user_type = User::find($id);
+    if ($user_type->type == 0) {
+      $data = Post::where('deleted_user_id', null)
+      ->latest()
+      ->paginate(5);
+    } else {
+      $data = Post::where('deleted_user_id', null)->where('created_user_id', '=', $id)
+        ->latest()
+        ->paginate(5);
+    }
 
-    $data = Post::where('deleted_user_id', null)
-    ->latest()
-    ->paginate(5);
+    
     return $data;
   }
 
@@ -134,12 +134,19 @@ class PostDao implements PostDaoInterface
 
   public function PostSearch($request)
   {
+    $id = Auth::user()->id;
+    $user_type = User::find($id);
+    
     $search=$request->input('search');
     // $posts = Post::where('title','LIKE','%'.$search.'%')
     //         ->orWhere('description','LIKE','%'.$search.'%')->get();
-
-    $posts = Post::where('title','LIKE','%'.$search.'%')
-            ->orWhere('description','LIKE','%'.$search.'%')->paginate(2);   
+    if($user_type->type==1){
+    $posts = Post::query()
+            ->where( 'created_user_id', '=', $id)
+            ->where('title','LIKE','%'.$search.'%')
+            // ->orWhere('description','LIKE','%'.$search.'%')
+            ->paginate(2);   
+    };
     return $posts;
   }
 }

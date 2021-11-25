@@ -1,66 +1,47 @@
 @extends('layouts.app')
 @section('content')
-<div class="container mb-5 mx-auto">
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-      <h2 class="text-primary my-3 font-weight-bold">User Profile</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-      <form action="" method="POST" class="mb-5 mx-auto" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group row mt-3 mb-3">
+<div class="container  mx-auto">
+  <div class="row ">
+    <div class="col-md-8 my-3 rounded shadow p-2 mb-5 bg-white rounded  mx-auto bg-white">
+     <div class="card-header bg-gradient-primary">
+          <h2 class="card-title  text-center">User Profile</h2>
+        </div>
+        <div class="form-group row my-3">
           <input type="hidden" id="id" name="id" value="{{ $user['id'] }}">
-          <div class="col-sm-4">
-            <img src="/img/{{ $user['profile'] }}" width="150px" height="150px" class="avatar img-circle img-thumbnail rounded-circle" alt="avatar">
+          <div class=" col-6 ">
+            <img src="/img/{{ $user['profile'] }}" width="200" height="200" class="img-thumbnail" alt="avatar">
           </div>
-          <div class="col-sm-5"></div>
-          <div class="col-sm-3 mt-5">
-            <a href="{{ route('user.edit',$user['id']) }}" class="btn btn-outline-primary mt-5 float-right">Edit Profile</a>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="name" class="col-sm-4 col-form-label text-primary">Name :</label>
-          <div class="col-sm-8">
-            <input type="text" class="font-weight-bold form-control border-0" id="name" name="name" value="{{ $user['name'] }}" disabled>
+          <div class="col-6">
+            <a href="{{ route('user.edit',$user['id']) }}" class="btn btn-outline-primary  float-right">Edit Profile</a>
           </div>
         </div>
         <div class="form-group row">
-          <label for="email" class="col-sm-4 col-form-label text-primary">Email Address :</label>
-          <div class="col-sm-8">
-            <input type="email" class="font-weight-bold form-control border-0" id="email" name="email" value="{{ $user['email'] }}" disabled>
-          </div>
+          <label class="col-3 col-form-label">Name :</label>
+          <label class="col-9 col-form-label">{{ $user['name'] }}</label>
         </div>
         <div class="form-group row">
-          <label for="type" class="col-sm-4 col-form-label text-primary">Type :</label>
-          <div class="col-sm-8">
-            <input type="text" class="font-weight-bold form-control border-0" id="type" name="type" value="{{ $user['type'] }}" disabled>
-          </div>
+          <label class="col-3 col-form-label">Email :</label>
+          <label class="col-9 col-form-label">{{ $user['email'] }}</label>
         </div>
         <div class="form-group row">
-          <label for="phone" class="col-sm-4 col-form-label text-primary">Phone Number :</label>
-          <div class="col-sm-8">
-            <input type="text" class="font-weight-bold form-control border-0" id="phone" name="phone" value="{{ $user['phone'] }}" disabled>
-          </div>
+          <label class="col-3 col-form-label">Role :</label>
+          <label class="col-9 col-form-label">{{ $user['type'] }}</label>
         </div>
         <div class="form-group row">
-          <label for="date" class="col-sm-4 col-form-label text-primary">Date of Birth :</label>
-          <div class="col-sm-8">
-            <input type="text" id="date" name="date" data-date-format="mm/dd/yyyy" class="font-weight-bold form-control border-0" value="{{ $user['dob'] }}" disabled>
-          </div>
+          <label class="col-3 col-form-label">Phone :</label>
+          <label class="col-9 col-form-label">{{ $user['phone'] }}</label>
         </div>
         <div class="form-group row">
-          <label for="address" class="col-sm-4 col-form-label text-primary">Address :</label>
-          <div class="col-sm-8">
-            <input type="text" id="address" name="address" class="font-weight-bold form-control border-0" value="{{ $user['address'] }}" disabled>
-          </div>
+          <label class="col-3 col-form-label">Date of birth :</label>
+          <label class="col-9 col-form-label">{{ $user['dob'] }}</label>
         </div>
-      </form>
+        <div class="form-group row">
+          <label class="col-3 col-form-label">Address :</label>
+          <label class="col-9 col-form-label">{{ $user['address'] }}</label>
+        </div>
+     
     </div>
-    <div class="col-md-2"></div>
+
   </div>
 </div>
 @endsection

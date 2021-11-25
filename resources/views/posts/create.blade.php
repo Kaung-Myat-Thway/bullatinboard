@@ -2,9 +2,9 @@
 @section('content')
 <div class="container m-auto">
   <div class="row">
-    <div class="col-md-8 mx-auto">
+    <div class="col-md-8 my-5 mx-auto">
       <!-- general form elements -->
-      <div class="card card-primary">
+      <div class="card card-primary shadow bg-white rounded">
         <div class="card-header bg-gradient-primary">
           <h3 class="card-title">Create Post</h3>
         </div>

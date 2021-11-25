@@ -51,7 +51,7 @@
           @foreach($posts as $post)
           <tr>
             <td class="text-dark">{{$i++}}</td>
-            <td><a href="" class="modal-lg text-dark" data-toggle="modal" data-target="#post{{$post->id}}">{{$post->title}}</a>
+            <td><a href="" class="modal-lg text-link" data-toggle="modal" data-target="#post{{$post->id}}">{{$post->title}}</a>
               <!-- Show post modal -->
               <div class="modal fade" id="post{{$post->id}}" aria-hidden="true">
                 <div class="modal-dialog">
