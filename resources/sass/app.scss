@@ -1,3 +1,6 @@
+$fa-font-path: "/webfonts";
+@import '~@fortawesome/fontawesome-free/css/all.min';
+
 // Flag Icon CSS
 @import '~flag-icon-css/sass/flag-icons';
 
@@ -6,4 +9,6 @@
 
 // Bootstrap
 @import '~admin-lte/build/scss/AdminLTE';
+
+
 

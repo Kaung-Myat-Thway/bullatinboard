@@ -35,6 +35,7 @@ Route::post('/update_confirm', 'UserController@update_confirm')->name('user.upda
 Route::get('/usersearch', 'UserController@search')->name('user.search');
 Route::get('/user', 'UserController@index')->name('user.index')->middleware('admin');
 
+
 Route::resource('/post', 'PostController');
 Route::post('posts/confirm', 'PostController@confirm')->name('post.confirm');
 Route::post('posts/update_confirm', 'PostController@update_confirm')->name('post.update_confirm');

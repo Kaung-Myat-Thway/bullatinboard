@@ -2,26 +2,28 @@
 @section('content')
 <div class="container mb-5 pb-5">
   <div class="row">
-    <div class="col-md-12 py-3">
+    <div class="col-12 py-3">
       <h3 class="text-dark">Post List</h3>
     </div>
   </div>
   <div class="row mb-3">
-    <form action="{{ route('post.search') }}" method="GET" class="col-md-5 row">
-      <div class="col-sm-7"> <input type="text" name="search" class="form-control" placeholder="Search Post here..." required /></div>
-      <button type="submit" class="btn btn-primary px-2 col-sm-3"><i class="fas fa-search mr-2"></i>Search</button>
+    <form action="{{ route('post.search') }}" method="GET" class="col-lg-5 col-md-12 col-sm-12 py-2 row">
+      <div class="col-8"> <input type="text" name="search" class="form-control" placeholder="Search Post here..." required /></div>
+      <button type="submit" class="btn btn-primary col-4"><i class=" fas fa-search "></i>Search</button>
     </form>
-    <div class="col-md-2 col-sm-12 p-auto">
-      <a href="{{ route('post.create')}}" class="btn btn-outline-primary px-5 w-100"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add</a>
+    <div class="col-lg-7 col-md-12 col-sm-12 py-2 row">
+    <div class="col-4  p-auto ">
+      <a href="{{ route('post.create')}}" class="btn btn-outline-primary px-5 w-100"><i class=" fas fa-plus"></i>Add</a>
     </div>
-    <div class="col-md-2 col-sm-12 p-auto">
-      <a href="{{ url('/excel')}}" class="btn btn-outline-primary px-4 w-100"><i class="fas fa-upload"></i>&nbsp;&nbsp;Upload</a>
+    <div class="col-4  p-auto">
+      <a href="{{ url('/excel')}}" class="btn btn-outline-primary px-4 w-100"><i class=" fas fa-upload"></i>Upload</a>
     </div>
-    <div class="col-md-2 col-sm-12 p-auto">
+    <div class="col-4 p-auto">
       <form action="{{ route('export') }}" method="GET">
         <input type="search" name="search" id="search-input" class="form-control m-auto" hidden />
-        <button type="submit" class="btn btn-outline-primary px-3 w-100" id="download-button"><i class="fas fa-download"></i> &nbsp;&nbsp; Download</button>
+        <button type="submit" class="btn btn-outline-primary px-3 w-100" id="download-button"><i class="  fas fa-download"></i>Download</button>
       </form>
+    </div>
     </div>
   </div>
   @if(Session('message'))
@@ -31,8 +33,8 @@
   </div>
   @endif
   <div class="row">
-    <div class="col-md-12">
-      <table class="table mt-3 table-hover text-primary" id="table">
+    <div class="col-12">
+      <table class="table mt-3 table-striped text-primary bg-white shadow" id="table">
         <thead class="bg-gradient-primary text-light">
           <tr>
             <th>No.</th>
@@ -106,8 +108,8 @@
             <td class="text-dark">{{$post->description}}</td>
             <td class="text-dark">{{$post->user['name']}}</td>
             <td class="text-dark">{{$post->created_at->format('Y/m/d')}}</td>
-            <td class="text-dark"><a href="{{ route('post.edit',$post->id)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Edit</a></td>
             <td>
+            <a href="{{ route('post.edit',$post->id)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Edit</a>
               <a href="#" class="btn btn-danger delete btn-sm" data-toggle="modal" data-target="#deleteModal{{$post->id}}"><i class="fas fa-trash"></i>Delete</a>
               <!-- Delete Modal -->
               <div class="modal modal-danger fade" id="deleteModal{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="Delete" aria-hidden="true">

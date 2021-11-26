@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="{{ route('home') }}" class="brand-link text-center">
-        
-        <span class="brand-text font-weight-light">Bullatin Board<i class="fas fa-sticky-note mx-2"></i></span>
+    <a href="#" class="brand-link">
+    <img src="/img/logo.jpg" alt="Bullatin Board Logo" class="brand-image  elevation-3" >
+        <span class="brand-text font-weight-light">Bullatin Board</span>
     </a>
    
 

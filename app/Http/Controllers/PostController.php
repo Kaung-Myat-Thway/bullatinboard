@@ -171,6 +171,7 @@ class PostController extends Controller
         } else {
             return redirect('/post')->with('message', 'No Results found!');
         }
+
     }
 
     public function importExportView()

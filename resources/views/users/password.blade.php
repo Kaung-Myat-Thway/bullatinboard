@@ -16,14 +16,24 @@
           <div class="card-body">
             <div class="form-group">
             <label for="current-password">Current Password</label>
+         
             <input type="password"  class="form-control @error ('current-password') is-invalid @enderror" id="current-password" name="current-password">
+      
+   
+            
                @error('current-password')
                 <div class="invalid-feedback"><strong>{{$message}}</strong></div>
                 @enderror 
             </div>
             <div class="form-group ">
             <label for="password" >New Password</label>
-              <input type="password"  class="form-control @error('password') is-invalid @enderror" id="password" name="password" autocomplete="current-password">
+            <div class="input-group" id="show_hide_password">
+            <input type="password"  class="form-control @error('password') is-invalid @enderror" id="password" name="password" autocomplete="current-password">
+      <div class="input-group-addon">
+        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+      </div>
+    </div>
+          
               @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

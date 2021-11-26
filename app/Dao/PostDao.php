@@ -144,7 +144,7 @@ class PostDao implements PostDaoInterface
     $posts = Post::query()
             ->where( 'created_user_id', '=', $id)
             ->where('title','LIKE','%'.$search.'%')
-            // ->orWhere('description','LIKE','%'.$search.'%')
+           ->where('description','LIKE','%'.$search.'%')
             ->paginate(2);   
     };
     return $posts;

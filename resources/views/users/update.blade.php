@@ -75,7 +75,7 @@
         
             </div>
             <div class="form-group">
-            <a href="{{ route('user.password')}}" class="ml-2 mt-3">Change Password</a>
+            <a href="{{ route('user.password')}}" class="ml-2 mt-3 text-primary">Change Password</a>
             </div>
           </div>
           <!-- /.card-body -->
