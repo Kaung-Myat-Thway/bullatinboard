@@ -192,7 +192,9 @@ class UserController extends Controller
     public function search(Request $request)
     {
         $users = $this->userInterface->userSearch($request);
-
+        if(is_string($users)){
+            return redirect('/user')->with('message','Please input some value!');
+        }
         if(count($users)>0)
         {
             return view('users.index', compact('users'))->withQuery($users);

@@ -183,6 +183,13 @@ class UserDao implements UserDaoInterface
    */
   public function UserSearch($request)
   {
+    
+    if($request->name ==null &&
+       $request->email ==null && 
+       $request->created_from ==null &&
+       $request->created_to ==null ){
+         return "string";
+       }
     $name=$request->input('name');
     if($name){
         $users = User::where('name', 'LIKE', "%" . $name . "%");
