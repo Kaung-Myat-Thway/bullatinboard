@@ -15,14 +15,14 @@
           <div class="card-body">
             <div class="form-group">
               <label for="title">Title</label>
-              <input type="text" id="title" name="title" value="{{ $post['title'] }}" class="form-control font-weight-bold bg-white" readonly>
+              <input type="text" id="title" name="title" value="{{ $post['title'] }}" class="form-control  bg-white" readonly>
               @error('title')
               <div class="invalid-feedback"><strong>{{$message}}</strong></div>
               @enderror
             </div>
             <div class="form-group">
               <label for="description">Description</label>
-              <input type="text" id="description" name="description" value="{{ $post['description'] }}" class="form-control font-weight-bold bg-white" readonly>
+              <input type="text" id="description" name="description" value="{{ $post['description'] }}" class="form-control  bg-white" readonly>
               @error('description')
               <div class="invalid-feedback"><strong>{{$message}}</strong></div>
               @enderror
@@ -33,8 +33,8 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            <button type="submit" class="btn btn-success">Confirm</button>
-            <a href="{{ route('post.create') }}" type="button" class="btn btn-danger">Cancel</a>
+            <button type="submit" class="btn btn-success">Save</button>
+            <a href="{{ route('post.create') }}" type="button" class="btn btn-danger">Back</a>
           </div>
         </form>
       </div>
