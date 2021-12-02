@@ -34,7 +34,7 @@
           <!-- /.card-body -->
           <div class="card-footer">
             <button type="submit" class="btn btn-success">Save</button>
-            <a href="{{ route('post.create') }}" type="button" class="btn btn-danger">Back</a>
+            <a href="javascript:history.back()" type="button" class="btn btn-danger">Back</a>
           </div>
         </form>
       </div>
