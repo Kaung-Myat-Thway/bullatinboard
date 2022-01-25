@@ -1,12 +1,14 @@
 # BulletinBoard Project
 
-## Requirements
+T
+ Requirements
 
 - PHP 7.4
 - Apache 
 - MySQL 8.0.27
 - Composer 2.1.9
 - Laravel 7
+- Task 2
 
 ## Installation
 
