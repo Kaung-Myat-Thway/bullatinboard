@@ -42,8 +42,8 @@
           <label class="col-9 col-form-label">{{ $user['address'] }}</label>
         </div>
         .<div class="form-group">
-        <button class="btn btn-primary my-3" type="submit">Confirm</button>
-        <a href="{{ route('user.edit',$user['id']) }}" class="btn btn-danger">Cancel</a>
+        <button class="btn btn-primary my-3" type="submit">Update</button>
+        <a href="javascript:history.back()" type="button" class="btn btn-danger">Back</a>
         </div>
         <input type="hidden" class="font-weight-bold form-control border-0" id="name" name="name" value="{{ $user['name'] }}">
         <input type="hidden" class="font-weight-bold form-control border-0" id="email" name="email" value="{{ $user['email'] }}">

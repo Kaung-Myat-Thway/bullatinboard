@@ -3,12 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{{ config('app.name') }}</title>
+    <title>Bullatin Board</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
 
     @yield('third_party_stylesheets')
 
@@ -110,7 +111,7 @@
         </div>
 
         <!-- Main Footer -->
-        <footer class="main-footer">
+        <footer class="main-footer text-sm">
 
             <strong>Copyright &copy; 2021 <a href="#">BullatinBoard</a>.</strong> All rights
             reserved.
